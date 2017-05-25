@@ -13,3 +13,25 @@
             this.insert("addNewDimColModel",param);
         }
     }
+
+
+    <!--把数据库维表新增的字段等插入到维表模型中-->
+    <select id="addNewDimColModel" resultType="java.util.LinkedHashMap" parameterType="java.util.Map">
+ insert into tb_md_cols_def(col_id,table_id,col_name,col_datatype,col_state,
+  col_bus_type,is_bus_pk,create_user_id,create_time,modfiy_user_id,modfiy_time,
+  is_query_item,is_show_item,is_import_item)
+
+ select seq_tb_md_cols_def.nextval,${table_id},t.column_name,decode(t.data_type,'DATE',t.data_type,t.data_type||'('||t.data_length||')'),
+ 1,0,0,9050,sysdate,9050,sysdate,0,0,0
+  from all_tab_columns t
+ where t.owner = 'EDA'
+   and t.table_name = #{table_name}
+   and not exists (select 1
+          from tb_md_dim_table_def a, tb_md_cols_def b
+         where t.column_name = b.col_name
+           and a.table_id = b.table_id
+           and a.table_state = 1
+           and a.table_name = #{table_name})
+
+    </select>
+        <!--维表同步 end-->
