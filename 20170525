@@ -1,1 +1,15 @@
-test
+
+    //维表同步
+    @Override
+    public void synchronizeDimModel() throws Exception {
+        Map param = new HashMap();
+        List<Map<String,String>> list1 = this.selectList("queryAllDimTableList",param);
+        for (Map map1 : list1){
+            param.put("table_name",map1.get("table_name"));
+            Map map = this.queryListByPage("queryDimTableList",param);
+            List<Map<String,Object>> pageList = (List<Map<String, Object>>) map.get("pageList");
+            Map<String,Object> pageMap = pageList.get(0);
+            param.put("table_id", pageMap.get("table_id"));
+            this.insert("addNewDimColModel",param);
+        }
+    }
