@@ -1,0 +1,43 @@
+public static void main(String[] args) {
+        List<Map<String,Object>> list1 = new ArrayList<Map<String,Object>>();
+        List<Map<String,Object>> list3 = new ArrayList<Map<String,Object>>();
+        Map<String,Object> map1 = new HashMap<String,Object>();
+        Map<String,Object> map2 = new HashMap<String,Object>();
+        Map<String,Object> map3 = new HashMap<String,Object>();
+        Map<String,Object> map4 = new HashMap<String,Object>();
+        Map<String,Object> map5 = new HashMap<String,Object>();
+        map1.put("1","a");
+        map1.put("2", "b");
+        map1.put("3","c");
+        map1.put("4", "d");
+
+        map2.put("1","aa");
+        map2.put("2", "bb");
+        map2.put("3","cc");
+        map2.put("4", "dd");
+        list1.add(map1);
+        list1.add(map2);
+        List<Map<String,Object>> list2 = new ArrayList<Map<String,Object>>();
+
+        map3.put("1","a");
+        map3.put("2", "b");
+        map3.put("3","c");
+
+
+        map4.put("1","aa");
+        map4.put("2", "bb");
+        map4.put("3","cc");
+
+
+        list2.add(map3);
+        list2.add(map4);
+        System.out.println(list1);
+        System.out.println(list2);
+        for(Map map6 :list1){
+            if(!list2.contains(map6)){
+                map5.put("4",map6.get("4"));
+                list3.add(map5);
+            }
+        }
+        System.out.println(list3);
+    }
