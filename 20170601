@@ -1,1 +1,2 @@
 onclick="window.parent.location.href='${pageContext.request.contextPath}/jsp/portal/allPsList/allPsList.jsp?from=1&status=1&curPage=1&name='"
+window.location.href
