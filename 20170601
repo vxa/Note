@@ -1,2 +1,35 @@
 onclick="window.parent.location.href='${pageContext.request.contextPath}/jsp/portal/allPsList/allPsList.jsp?from=1&status=1&curPage=1&name='"
 window.location.href
+
+var model_state = value.model_state;
+                    if(model_state=="1"){
+                        model_state="已发布";
+                    }
+                    if(model_state=="2"){
+                        model_state="审批中";
+                    }
+                    if(model_state=="3"){
+                        model_state="下线";
+                    }
+                    if(model_state=="4"){
+                        model_state="待发布";
+                    }
+                    if(model_state=="5"){
+                        model_state="审批不通过";
+                    }
+                    var lifecycle = value.lifecycle;
+                    if(lifecycle=="1"){
+                        lifecycle="新用户获取";
+                    }
+                    if(lifecycle=="2"){
+                        lifecycle="入网期";
+                    }
+                    if(lifecycle=="3"){
+                        lifecycle="成长期";
+                    }
+                    if(lifecycle=="4"){
+                        lifecycle="成熟期";
+                    }
+                    if(lifecycle=="5"){
+                        lifecycle="衰退期";
+                    }
